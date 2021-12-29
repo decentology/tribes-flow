@@ -18,7 +18,9 @@ const Setup = () => {
   })
 
   const createInstance = async () => {
-    if (!account) connectWallet()
+    if (!account) {
+      connectWallet()
+    }
     try {
       setIsLoading(true)
       setLoaderMessage('Intitiaing Transaction...')
@@ -33,7 +35,9 @@ const Setup = () => {
   }
 
   const addNewTribe = async () => {
-    // if (!account) connectWallet()
+    // if (!account) {
+    //   connectWallet()
+    // }
     // try {
     //   setIsLoading(true)
     //   setLoaderMessage('Uploading image...')

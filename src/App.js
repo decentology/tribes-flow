@@ -12,7 +12,9 @@ const TribesPage = (props) => {
   const { account, connectWallet, fcl } = useContext(FlowContext)
 
   useEffect(() => {
-    if (!account) connectWallet()
+    if (!account) {
+      connectWallet()
+    }
     const getCurrentTribe = async () => {
       try {
         const data = await fcl.send([

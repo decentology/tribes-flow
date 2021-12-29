@@ -6,7 +6,7 @@ import './styles/Tribes.css'
 import Nav from './components/Nav.js'
 import Loader from './components/Loader'
 
-import * as t from "@onflow/types";
+import * as t from '@onflow/types'
 
 const AllTribes = () => {
   const navigate = useNavigate()
@@ -19,8 +19,9 @@ const AllTribes = () => {
     try {
       setIsLoading(true)
       setLoaderMessage('Intitializing Transaction...')
-      const transactionId = await fcl.send([
-        fcl.transaction(`
+      const transactionId = await fcl
+        .send([
+          fcl.transaction(`
         import Tribes from 0x1960ff14acc51991
 
         transaction(tenantOwner: Address, tribeName: String) {
@@ -43,48 +44,48 @@ const AllTribes = () => {
             }
         }
         `),
-        fcl.args([
-          fcl.arg(Tenant, t.Address),
-          fcl.arg(tribeName, t.String)
-        ]),
-        fcl.proposer(fcl.authz),
-        fcl.payer(fcl.authz),
-        fcl.authorizations([fcl.authz]),
-        fcl.limit(999)
-      ]).then(fcl.decode);
+          fcl.args([fcl.arg(Tenant, t.Address), fcl.arg(tribeName, t.String)]),
+          fcl.proposer(fcl.authz),
+          fcl.payer(fcl.authz),
+          fcl.authorizations([fcl.authz]),
+          fcl.limit(999),
+        ])
+        .then(fcl.decode)
 
       console.log(transactionId)
 
       setLoaderMessage('Joining Tribe...')
 
-      await fcl.tx(transactionId).onceSealed();
+      await fcl.tx(transactionId).onceSealed()
       setIsLoading(false)
       navigate('/my-tribe')
-    } catch { }
+    } catch {}
   }
 
   useEffect(() => {
-    if (!account) connectWallet()
+    if (!account) {
+      connectWallet()
+    }
     const getAllTribes = async () => {
       try {
         setIsLoading(true)
         setLoaderMessage('')
-        const tribes = await fcl.send([
-          fcl.script(`
+        const tribes = await fcl
+          .send([
+            fcl.script(`
           import Tribes from 0x1960ff14acc51991
           
           pub fun main(tenantOwner: Address): [Tribes.TribeData] {
               return Tribes.getAllTribes(tenantOwner).values
           }
           `),
-          fcl.args([
-            fcl.arg(Tenant, t.Address)
+            fcl.args([fcl.arg(Tenant, t.Address)]),
           ])
-        ]).then(fcl.decode);
+          .then(fcl.decode)
 
         let allTribes = []
         for (let i = 0; i < Object.keys(tribes).length; i++) {
-          let data = tribes[i];
+          let data = tribes[i]
           allTribes.push({
             id: i,
             name: data.name,
@@ -94,7 +95,7 @@ const AllTribes = () => {
         }
         setAllTribes(allTribes)
         setIsLoading(false)
-      } catch { }
+      } catch {}
     }
     getAllTribes()
   }, [account, connectWallet])
