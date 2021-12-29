@@ -1,0 +1,43 @@
+{
+	"emulators": {
+		"default": {
+			"port": 3569,
+			"serviceAccount": "emulator-account"
+		}
+	},
+	"contracts": {
+		"HyperverseModule": "./contracts/HyperverseModule.cdc",
+		"IHyperverseComposable": "./contracts/IHyperverseComposable.cdc",
+		"Tribes": "./contracts/Tribes.cdc"
+	},
+	"networks": {
+		"emulator": "127.0.0.1:3569",
+		"mainnet": "access.mainnet.nodes.onflow.org:9000",
+		"testnet": "access.devnet.nodes.onflow.org:9000"
+	},
+	"accounts": {
+		"emulator-account": {
+			"address": "f8d6e0586b0a20c7",
+			"key": "82c5f84f5a8adc6d8d3213c45a18c299044969671549ccd413f8ae2e86978903"
+		},
+		"testnet-account": {
+			"address": "0x1960ff14acc51991",
+			"key": {
+				"type": "hex",
+				"index": 0,
+				"signatureAlgorithm": "ECDSA_secp256k1",
+				"hashAlgorithm": "SHA3_256",
+				"privateKey": "e35edfa2537036a66feee9541b75a958c52822778151c19e5d0dbfe07de6197f"
+			}
+		}
+	},
+	"deployments": {
+		"testnet": {
+			"testnet-account": [
+				"HyperverseModule",
+				"IHyperverseComposable",
+				"Tribes"
+			]
+		}
+	}
+}
