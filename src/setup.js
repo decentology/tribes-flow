@@ -1,12 +1,9 @@
 import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { SkynetClient } from 'skynet-js'
 import './styles/Tribes.css'
 import { Tenant } from './shared'
 import { FlowContext } from './context'
 import Loader from './components/Loader'
-
-const client = new SkynetClient('https://siasky.net')
 
 const Setup = () => {
   const navigate = useNavigate()
@@ -14,7 +11,7 @@ const Setup = () => {
   const [instance, setInstance] = useState < Boolean > (false)
   const [isLoading, setIsLoading] = useState(false)
   const [loaderMessage, setLoaderMessage] = useState('Processing...')
-  const [imageFile, setImageFile] = useState()
+  // const [imageFile, setImageFile] = useState()
   const [formInput, updateInput] = useState({
     name: '',
     description: '',
@@ -36,32 +33,28 @@ const Setup = () => {
   }
 
   const addNewTribe = async () => {
-    if (!account) connectWallet()
-    try {
-      setIsLoading(true)
-      setLoaderMessage('Uploading image...')
-      const { skylink } = await client.uploadFile(imageFile)
-      console.log(skylink)
-      const data = JSON.stringify({
-        name: formInput.name,
-        description: formInput.description,
-        image: skylink.replace('sia://', ''),
-      })
-      setLoaderMessage('Uploading Metadata...')
-      const { skylink: file } = await client.uploadFile(
-        new File([data], 'metadata.json'),
-      )
-      try {
-        setLoaderMessage('Intiating Transaction...')
-        // const addTxn = await tribesContract.addNewTribe(
-        //   file.replace('sia://', ''),
-        // )
-        // console.log(addTxn)
-        // setLoaderMessage('Processing Transaction...')
-        // await addTxn.wait()
-        // setIsLoading(false)
-      } catch { }
-    } catch { }
+    // if (!account) connectWallet()
+    // try {
+    //   setIsLoading(true)
+    //   setLoaderMessage('Uploading image...')
+    //   const data = JSON.stringify({
+    //     name: formInput.name,
+    //     description: formInput.description,
+    //     image: skylink.replace('sia://', ''),
+    //   })
+    //   setLoaderMessage('Uploading Metadata...')
+
+    //   try {
+    //     setLoaderMessage('Intiating Transaction...')
+    //     // const addTxn = await tribesContract.addNewTribe(
+    //     //   file.replace('sia://', ''),
+    //     // )
+    //     // console.log(addTxn)
+    //     // setLoaderMessage('Processing Transaction...')
+    //     // await addTxn.wait()
+    //     // setIsLoading(false)
+    //   } catch { }
+    // } catch { }
   }
 
   return (
@@ -102,7 +95,7 @@ const Setup = () => {
                 id="tribe-image"
                 name="tribe image"
                 accept="image/*, .jpg"
-                onChange={(e) => setImageFile(e.target.files[0])}
+              // onChange={(e) => setImageFile(e.target.files[0])}
               />
               <input
                 type="text"

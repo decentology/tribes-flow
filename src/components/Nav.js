@@ -2,7 +2,6 @@ import "../styles/Tribes.css"
 import { useContext } from "react"
 import { Link } from "react-router-dom"
 import { FlowContext } from '../context'
-import { shortenHash } from "../shared"
 const Nav = () => {
   const { account, connectWallet } = useContext(FlowContext)
 

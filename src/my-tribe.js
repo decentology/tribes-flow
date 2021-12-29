@@ -38,7 +38,6 @@ const TribesPage = () => {
             }
         }
         `),
-        ,
         fcl.args([
           fcl.arg(Tenant, t.Address)
         ]),
@@ -94,7 +93,7 @@ const TribesPage = () => {
         setCurrentTribe({
           name: data.name,
           image: data.ipfsHash,
-          description: data.description,
+          description: data.description
         })
         setIsLoading(false)
       } catch (e) {

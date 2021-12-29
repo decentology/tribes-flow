@@ -1,13 +1,10 @@
-import React, {
+import {
   useState,
   createContext,
-  ReactNode,
-  useEffect,
-  useCallback,
+  useEffect
 } from 'react'
 
 import * as fcl from '@onflow/fcl';
-import * as types from '@onflow/types';
 
 fcl.config()
   .put('accessNode.api', 'https://access-testnet.onflow.org')
