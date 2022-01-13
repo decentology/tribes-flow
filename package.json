@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@decentology/hyperverse": "^0.1.4",
+    "@decentology/hyperverse-flow": "^0.1.1",
+    "@decentology/hyperverse-flow-tribes": "^0.1.0",
     "@onflow/fcl": "^0.0.77",
     "@onflow/types": "^0.0.6",
     "@testing-library/jest-dom": "^5.11.4",

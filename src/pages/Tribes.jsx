@@ -1,16 +1,13 @@
-import { useState, useEffect, useContext } from 'react'
-import { useNavigate } from 'react-router-dom'
-import './styles/Tribes.css'
-import Nav from './components/Nav.js'
-import { FlowContext } from './context'
-import { Tenant } from './shared'
-import * as t from "@onflow/types";
+import { useState, useContext, useEffect } from 'react';
 
-const TribesPage = (props) => {
+import Nav from '../components/Nav.jsx';
+
+function Tribes(props) {
   const [currentTribe, setCurrentTribe] = useState()
   const navigate = useNavigate()
   const { account, connectWallet, fcl } = useContext(FlowContext)
 
+  /*
   useEffect(() => {
     if (!account) connectWallet()
     const getCurrentTribe = async () => {
@@ -49,6 +46,7 @@ const TribesPage = (props) => {
     }
     getCurrentTribe()
   }, [account, connectWallet])
+  */
 
   return (
     <main>
@@ -75,7 +73,7 @@ const TribesPage = (props) => {
         </div>
       </div>
     </main>
-  )
+  );
 }
 
-export default TribesPage
+export { Tribes };

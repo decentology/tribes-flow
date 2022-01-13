@@ -1,9 +1,9 @@
 import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './styles/Tribes.css'
-import { Tenant } from './shared'
-import { FlowContext } from './context'
-import Loader from './components/Loader'
+// import { Tenant } from './shared'
+import { FlowContext } from '../context.js'
+import Loader from '../components/Loader'
 
 const Setup = () => {
   const navigate = useNavigate()
@@ -129,4 +129,4 @@ const Setup = () => {
     </main>
   )
 }
-export default Setup
+export { Setup };

@@ -1,20 +1,21 @@
 import { useState, useEffect, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { FlowContext } from './context'
-import './styles/Tribes.css'
-import Nav from './components/Nav.js'
-import Loader from './components/Loader'
-import { Tenant } from './shared'
+import { FlowContext } from '../context.js'
+import '../styles/Tribes.css'
+import Nav from '../components/Nav.jsx'
+import Loader from '../components/Loader'
+// import { Tenant } from './shared'
 
 import * as t from '@onflow/types';
 
-const TribesPage = () => {
+const MyTribe = () => {
   const navigate = useNavigate()
   const { account, connectWallet, fcl } = useContext(FlowContext)
   const [isLoading, setIsLoading] = useState(false)
   const [loaderMessage, setLoaderMessage] = useState('Processing...')
   const [currentTribe, setCurrentTribe] = useState({})
 
+  /*
   const leaveTribe = async () => {
     try {
       setIsLoading(true)
@@ -52,7 +53,9 @@ const TribesPage = () => {
       navigate('/')
     } catch { }
   }
+  */
 
+  /*
   useEffect(() => {
     if (!account) connectWallet()
 
@@ -102,6 +105,9 @@ const TribesPage = () => {
     }
     getCurrentTribe()
   }, [account, connectWallet])
+  */
+
+  const leaveTribe = () => { };
 
   return (
     <main>
@@ -151,4 +157,4 @@ const TribesPage = () => {
   )
 }
 
-export default TribesPage
+export { MyTribe };

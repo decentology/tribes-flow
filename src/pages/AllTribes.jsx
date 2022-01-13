@@ -1,10 +1,10 @@
 import { useEffect, useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { FlowContext } from './context'
-import { Tenant } from './shared'
-import './styles/Tribes.css'
-import Nav from './components/Nav.js'
-import Loader from './components/Loader'
+import { FlowContext } from '../context.js'
+// import { Tenant } from '../shared'
+import '../styles/Tribes.css'
+import Nav from '../components/Nav.jsx'
+import Loader from '../components/Loader'
 
 import * as t from "@onflow/types";
 
@@ -15,6 +15,7 @@ const AllTribes = () => {
   const [allTribes, setAllTribes] = useState([])
   const { account, connectWallet, fcl } = useContext(FlowContext)
 
+  /*
   const joinTribe = async (tribeName) => {
     try {
       setIsLoading(true)
@@ -62,7 +63,9 @@ const AllTribes = () => {
       navigate('/my-tribe')
     } catch { }
   }
+  */
 
+  /*
   useEffect(() => {
     if (!account) connectWallet()
     const getAllTribes = async () => {
@@ -98,6 +101,9 @@ const AllTribes = () => {
     }
     getAllTribes()
   }, [account, connectWallet])
+  */
+
+  const joinTribe = () => { };
 
   return (
     <main>
@@ -141,4 +147,4 @@ const AllTribes = () => {
   )
 }
 
-export default AllTribes
+export { AllTribes };

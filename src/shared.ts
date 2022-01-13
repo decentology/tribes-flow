@@ -1,1 +1,0 @@
-export const Tenant = "0x1960ff14acc51991";
