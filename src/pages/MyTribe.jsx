@@ -6,7 +6,7 @@ import Nav from '../components/Nav.jsx'
 import Loader from '../components/Loader'
 // import { Tenant } from './shared'
 
-import * as t from '@onflow/types';
+import * as t from '@onflow/types'
 
 const MyTribe = () => {
   const navigate = useNavigate()
@@ -20,8 +20,9 @@ const MyTribe = () => {
     try {
       setIsLoading(true)
       setLoaderMessage('Intitiaing Transaction...')
-      const transactionId = await fcl.send([
-        fcl.transaction(`
+      const transactionId = await fcl
+        .send([
+          fcl.transaction(`
         import Tribes from 0x1960ff14acc51991
 
         transaction(tenantOwner: Address) {
@@ -39,32 +40,34 @@ const MyTribe = () => {
             }
         }
         `),
-        fcl.args([
-          fcl.arg(Tenant, t.Address)
-        ]),
-        fcl.proposer(fcl.authz),
-        fcl.payer(fcl.authz),
-        fcl.authorizations([fcl.authz]),
-        fcl.limit(999)
-      ]).then(fcl.decode);
+          fcl.args([fcl.arg(Tenant, t.Address)]),
+          fcl.proposer(fcl.authz),
+          fcl.payer(fcl.authz),
+          fcl.authorizations([fcl.authz]),
+          fcl.limit(999),
+        ])
+        .then(fcl.decode)
       setLoaderMessage('Leaving Tribe...')
-      await fcl.tx(transactionId).onceSealed();
+      await fcl.tx(transactionId).onceSealed()
       setIsLoading(false)
       navigate('/')
-    } catch { }
+    } catch {}
   }
   */
 
   /*
   useEffect(() => {
-    if (!account) connectWallet()
+    if (!account) {
+      connectWallet()
+    }
 
     const getCurrentTribe = async () => {
       try {
         setIsLoading(true)
         setLoaderMessage('')
-        const data = await fcl.send([
-          fcl.script(`
+        const data = await fcl
+          .send([
+            fcl.script(`
           import Tribes from 0x1960ff14acc51991
           
           pub fun main(account: Address, tenantOwner: Address): {String: String}? {
@@ -87,20 +90,21 @@ const MyTribe = () => {
           
               return returnObject
           }`),
-          fcl.args([
-            fcl.arg(account.addr, t.Address),
-            fcl.arg(Tenant, t.Address)
+            fcl.args([
+              fcl.arg(account.addr, t.Address),
+              fcl.arg(Tenant, t.Address),
+            ]),
           ])
-        ]).then(fcl.decode);
+          .then(fcl.decode)
 
         setCurrentTribe({
           name: data.name,
           image: data.ipfsHash,
-          description: data.description
+          description: data.description,
         })
         setIsLoading(false)
       } catch (e) {
-        console.log(e);
+        console.log(e)
       }
     }
     getCurrentTribe()

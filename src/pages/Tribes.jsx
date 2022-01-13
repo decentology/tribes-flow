@@ -9,7 +9,9 @@ function Tribes(props) {
 
   /*
   useEffect(() => {
-    if (!account) connectWallet()
+    if (!account) {
+      connectWallet()
+    }
     const getCurrentTribe = async () => {
       try {
         const data = await fcl.send([
