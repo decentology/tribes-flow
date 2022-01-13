@@ -4,7 +4,7 @@ import { FlowContext } from '../context.js'
 // import { Tenant } from '../shared'
 import '../styles/Tribes.css'
 import Nav from '../components/Nav.jsx'
-import Loader from '../components/Loader'
+import Loader from '../components/Loader.jsx'
 
 import * as t from '@onflow/types'
 

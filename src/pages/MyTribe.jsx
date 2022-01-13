@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { FlowContext } from '../context.js'
 import '../styles/Tribes.css'
 import Nav from '../components/Nav.jsx'
-import Loader from '../components/Loader'
+import Loader from '../components/Loader.jsx'
 // import { Tenant } from './shared'
 
 import * as t from '@onflow/types'

@@ -1,11 +1,10 @@
-import { useState, useContext, useEffect } from 'react';
+import { useState, useContext, useEffect, useNavigate } from 'react';
 
 import Nav from '../components/Nav.jsx';
 
 function Tribes(props) {
   const [currentTribe, setCurrentTribe] = useState()
   const navigate = useNavigate()
-  const { account, connectWallet, fcl } = useContext(FlowContext)
 
   /*
   useEffect(() => {
@@ -56,7 +55,7 @@ function Tribes(props) {
       <div className="hero">
         <div className="header">
           <h1> Tribes</h1>
-          {account ? (
+          {/* {account ? (
             !currentTribe ? (
               <button
                 className="join"
@@ -71,7 +70,7 @@ function Tribes(props) {
                 View Your Tribe
               </button>
             )
-          ) : null}
+          ) : null} */}
         </div>
       </div>
     </main>

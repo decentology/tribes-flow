@@ -1,6 +1,6 @@
 import '../styles/Tribes.css'
 
-const Loader = ({ loaderMessage }: { loaderMessage: string }) => {
+const Loader = ({ loaderMessage }) => {
   return (
     <div className="container">
       <div className="loader">

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import './styles/Tribes.css'
 // import { Tenant } from './shared'
 import { FlowContext } from '../context.js'
-import Loader from '../components/Loader'
+import Loader from '../components/Loader.jsx'
 
 const Setup = () => {
   const navigate = useNavigate()
